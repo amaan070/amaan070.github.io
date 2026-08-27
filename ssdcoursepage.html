@@ -4,20 +4,114 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
 <style>
-body {font-family: Quicksand; font-size: 20px; color:#333}
-        table
-        {
-            font-family: Quicksand; font-size:20px; color:#333;
-            border-collapse:collapse;
-            width:1000px;
-            padding:10px;
-            border-spacing:10px
-			
-        }
+body {
+    font-family: Quicksand, Arial, sans-serif;
+    font-size: 18px;
+    color: #333;
+    background-color: #f4f6f8;
+    margin: 0;
+    line-height: 1.6;
+}
 
-	.light-text-row {
-        color: #ADADAD; 
+/* Main tables used as page containers */
+table {
+    width: 90% !important;
+    max-width: 1200px;
+    margin: 25px auto;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+/* Heading section */
+h1 {
+    color: #1f3b5b;
+    margin-bottom: 5px;
+}
+
+h3 {
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Navigation */
+a {
+    color: #2563a8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #1d4f7a;
+}
+
+/* Table styling */
+th {
+    background-color: #1f3b5b;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    border-color: #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Make content sections cleaner */
+p {
+    margin: 10px 0;
+}
+
+/* Lists */
+ul {
+    padding-left: 30px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Horizontal lines */
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* Section titles */
+b[id] {
+    color: #1f3b5b;
+    font-size: 21px;
+}
+
+/* Light text */
+.light-text-row {
+    color: #888;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 16px;
     }
+
+    table {
+        width: 96% !important;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    td,
+    th {
+        padding: 8px;
+    }
+}
 
 </style>
 
