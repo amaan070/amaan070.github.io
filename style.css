@@ -13,8 +13,8 @@ body {
 /* Header */
 
 header {
-    background-color: #1f3b5b;
-    color: white;
+    background-color: #e8dcca;
+    color: #333;
     text-align: center;
     padding: 30px 20px;
 }
@@ -97,8 +97,8 @@ li {
 
 footer {
     text-align: center;
-    background-color: #1f3b5b;
-    color: white;
+    background-color: #e8dcca;
+    color: #333;
     padding: 15px;
     margin-top: 30px;
 }
