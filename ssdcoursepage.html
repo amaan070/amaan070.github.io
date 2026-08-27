@@ -1,460 +1,540 @@
-<!doctype html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="One self-contained HTML5 page that demonstrates (almost) every modern HTML element and feature for teaching." />
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0b0f">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Uncomment to demonstrate base: affects all relative links
-  <base target="_blank"> -->
-  <title>HTML Super Demo — One File to Teach (Almost) Everything</title>
-  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='16' fill='%23f5f5f5'/><path d='M32 88l16-64h32l16 64h-16l-4-16H52l-4 16H32zm24-28h16l-8-32-8 32z' fill='%23222'/></svg>">
-  <style>
-    :root { --bg: #ffffff; --fg: #111827; --muted: #6b7280; --brand: #2563eb; --radius: 12px; }
-    @media (prefers-color-scheme: dark) { :root { --bg:#0b0b0f; --fg:#f5f5f5; --muted:#9aa3b2; } }
-    *{box-sizing:border-box}
-    body{margin:0;font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--fg)}
-    a{color:var(--brand); text-underline-offset:.2em}
-    header.site{position:sticky;top:0;z-index:10;background:color-mix(in oklab, var(--bg), transparent 0%);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid #0003}
-    header .bar{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;padding:.5rem 1rem}
-    header nav a{margin-right:.75rem}
-    main{display:grid;grid-template-columns:260px 1fr; gap:1rem; padding:1rem}
-    nav#toc{position:sticky; top:3.2rem; align-self:start; max-height:calc(100dvh - 4rem); overflow:auto; border:1px solid #0002; border-radius:var(--radius); padding:.5rem}
-    nav#toc a{display:block;padding:.15rem .35rem;border-radius:8px}
-    nav#toc a:hover{background:#0001}
-    section{border:1px solid #0002; border-radius:var(--radius); padding:1rem; background:color-mix(in srgb, var(--bg), #fff 8%)}
-    h2{margin-top:0}
-    .grid{display:grid; gap:.75rem}
-    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width: 900px){ main{grid-template-columns:1fr} }
-    .box{border:1px dashed #0003; border-radius:10px; padding:.5rem}
-    figure{margin:0}
-    .pill{display:inline-block;padding:.2rem .5rem;border:1px solid #0002;border-radius:999px;background:#fff3}
-    .muted{color:var(--muted)}
-    .kbd{border:1px solid #0003;border-bottom-width:3px;border-radius:6px;padding:.1rem .35rem;background:linear-gradient(#fff,#eee)}
-    .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
-    .card{border:1px solid #0002;border-radius:12px;padding:.75rem;background:#fff2}
-    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-    details{border:1px solid #0002; border-radius:10px; padding:.5rem .8rem; background:#fff2}
-    dialog{border:1px solid #0003;border-radius:12px;padding:1rem}
-    table{width:100%; border-collapse:collapse}
-    th, td{border:1px solid #0002; padding:.4rem .5rem; text-align:left}
-    caption{caption-side:top; font-weight:600; padding:.4rem}
-    .two-col{columns:280px; column-gap:1rem}
-    .two-col > *{break-inside:avoid}
-    .demo-iframe{width:100%; aspect-ratio:16/9; border:1px solid #0002; border-radius:12px}
-  </style>
+<html>
+<head><title>CS6.302 SSD Monsoon 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+<style>
+body {font-family: Quicksand; font-size: 20px; color:#333}
+        table
+        {
+            font-family: Quicksand; font-size:20px; color:#333;
+            border-collapse:collapse;
+            width:1000px;
+            padding:10px;
+            border-spacing:10px
+			
+        }
+
+	.light-text-row {
+        color: #ADADAD; 
+    }
+
+</style>
+
+
+	<script>
+  
+  const lastModified = new Date(document.lastModified);
+ 
+  const formattedDate = lastModified.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  document.getElementById("lastUpdated").innerHTML += formattedDate;
+</script>
+<script>
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML = today 
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body>
-  <header class="site" role="banner">
-    <div class="bar">
-      <strong>HTML Super Demo</strong>
-      <nav aria-label="Top navigation">
-        <a href="#text">Text & Semantics</a>
-        <a href="#media">Images, Audio, Video</a>
-        <a href="#embeds">Embeds & SVG/Canvas</a>
-        <a href="#forms">Forms</a>
-        <a href="#tables">Tables & Lists</a>
-        <a href="#interactive">Interactive</a>
-        <a href="#scripting">Scripting & Web Components</a>
-      </nav>
-    </div>
-  </header>
+<body onload="startTime()">
+	<!--<script>
+	alert("All the Best for your Final Exam!"");
+		</script>-->
+<table align="center" width="100%" cellspacing="10" cellpadding="10" border="0">
+<tr>
+<td><h1 align="center" id="home">CS6.302 - Software System Development</h1><h3 align="center">Software Engineering Research Center, IIIT Hyderabad</h3> <h3 align="center">Monsoon 2026</h3></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#about">About</a>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#lecture">Lecture/Lab/Office Hours</a> &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#cpolicy">Course Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#schedule">Lectures</a> &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <a href="#lab">Lab</a> &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#activity">Exams</a> &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#staff">Staff</a>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <hr></td>
+</tr>
+<tr>
+<td> <p align="left"><b id="about">About:</b> Software System Development is a graduate-level course that equips students with a comprehensive understanding of the principles, tools, and practices involved in designing and building modern software systems. Emphasizing a systems-oriented perspective, the course explores foundational and contemporary topics including Operating Systems, Computer Networks, Software Engineering methodologies, and Database Systems (both relational and NoSQL).
+<br>
+<br>
+Students will gain practical experience with industry-relevant tools and technologies such as Bash scripting, SQL, NoSQL databases, HTML, CSS, JavaScript, front-end frameworks, RESTful APIs, Python, and Flask. The course focuses on building scalable, maintainable, and secure software systems while fostering an appreciation for system integration, version control, development workflows, and deployment strategies.
+<br>
+<br>
+Designed for students with a fundamental background in programming, this course bridges theory and practice, preparing them to contribute effectively to complex software development projects in both research and industry settings.<hr></td>
+</tr>
+<tr>
+<td> <p align="left"><b id="lecture">Lecture/Lab Hours:</b> The lectures will be in-person and will be conducted by the Instructor. The lab sessions will be in-person and will be conducted by the Teaching Assistants. The lecture material (slides, lectures notes, Suppl Material) can be accessed from this website The lecture and lab hours are mentioned below:
 
-  <main>
-    <nav id="toc" aria-label="On-page Table of Contents">
-      <strong>Contents</strong>
-      <a href="#document">Document & Metadata</a>
-      <a href="#text">Text & Semantics</a>
-      <a href="#links">Links & Navigation</a>
-      <a href="#media">Images & Media</a>
-      <a href="#embeds">Embeds, SVG & Canvas</a>
-      <a href="#forms">Forms & Controls</a>
-      <a href="#tables">Tables & Lists</a>
-      <a href="#interactive">Interactive Elements</a>
-      <a href="#international">Internationalization</a>
-      <a href="#a11y">Accessibility hints</a>
-      <a href="#scripting">Scripting, Template & Dialog</a>
-      <a href="#download">Download this demo</a>
-    </nav>
+<ul><li>Lecture &#x1F3DB; : 8:30 AM to 9:55 AM - Tuesdays and Fridays - Lecture Hall: H-204</li> <li>Lab/Tutorial &#x1F4BB; : 02:00 PM to 5:00 PM Friday - Lecture Hall: SH1 </li></ul></p>
+<p align="left"><b>Office Hours:</b> There are no specific instructor office hours. Instructor is available to meet all the students for 15 minutes before and after every class to address any queries or concerns. You can also directly write to instructor at saianirudh.karre[at]iiit.ac.in to get your queries addressed. TA office hours can be found <a href="#staff">here</a>.
+</p><hr>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><b id="cpolicy">Course Policy:</b> &nbsp;&nbsp;&nbsp;[<a href="#home">go to top</a>]
+<ul>
+<li><b>Teaching and Learning Methodology:</b>This course is designed in such a manner to help learners get the essence of principles behind good software system development. Learners will be taught concepts by making them work on real-life problems. This will promote deeper engagement, deeper understanding and resembles the true career situation. 
+</li>
+<li><b>Academic Honesty:</b> If A helps B in a Task X -> B doesn't get opportunity to do task X, B doesn't learn the skill to do task X, B gets spoilt-dependent-unfit for jobs requiring skills of task X, You may think it is okay to do it only once and not repeat it, But when a task is done once it gets wired into the brain as being "okay" and unless there is a strong reason it will repeat. If you want to help, help to learn!
+<br>
+<br> 
+</li>
+<li><b>Zero Tolerance on Plagiarism:</b>This course requires student to submit assignments, participate in in-class activities, give mid and final exams, work with groups on projects and so on. Any forms of cheating or plagiarism will result in a score of “0” for projects, assignments or exams. Egregious cases will result in a grade of “F” for the course.
+<br>
+<br> 
+</li>
+<li><b>Absentee policy:</b> You are expected to attend and participate in all lectures and lab sessions (graded or ungraded).  However, if any quiz/activity is held during the lecture session that you are absent, you will be given a ‘0’ for the same. There will be NO make up classes/quizzes/activities. These rules are not meant to be demeaning or penalizing. They are stated to establish a clear understanding of the course expectations for student participation and demeanor in the classroom. These rules are meant to help/motivate students to learn. 
+<br>
+<br> 
+</li>
+<li><b>Miscellaneous Instructions:</b> Given the subject is based on building software systems, ensure you have a laptop with decent configuration. Please make every effort to participate in the in-class discussions, interact with the instructor during class, interact with the TAs during the labs. You are expected to attend the class with your personal machine. 
+<br>
+<br> 
+</li>
+<li><b>Use of AI Tools:</b> Students are free to use different AI tools like ChatGPT, Co-pilot, etc. for the course assignments/activities. However, please do mention what tools and how they have been used in the submission report. Please note that these tools can mislead or provide wrong solutions. Its important to know the concept before using the tools. Tools are at the end-of-the day enablers. Today it will be ChatGPT tomorrow it will be something else but the concepts needs to be clear to leverage the different tools. Bottomline, feel free to use different tools but use them wisely!
+<br>
+<br> 
+</li>
+<li><b>Submission Deadlines:</b> Considering this course has more than 100+ enrolled students, there will be NO extensions! for any graded task. It is your responsibility to submit an assignment or a lab activity on a prescribed deadline. Please do not wait until last minute to submit your submission. We will not entertain last minute huddle issues due to moodle. The instructors and TAs shall provide considerable amount of time for all your assignments and lab activities with a grace time for submission. Please ensure that you follow the respective submission guidelines while you submit for assignments and lab activities. If you couldn't submit any graded task due to health issues/attending a game/attending a conference/personal issue - please work with academic office for exemption. 
+<br>
+<br> 
+</li>
+<li><b>Grading Policy:</b> Once a grade for certain course deliverable (labs, assignments, quiz, exam, etc.) is released, the students may request a re-evaluation (with appropriate reasons) of the grade up to a week after the grade has been posted. After that, the student may not discuss prior grades with the instructor (even if the instructors or TAs are at fault). There will be no makeup activity/lab under any circumstances unless prior permission is granted from Academic Office. Late submissions will not be entertained unless there is a genuine health reason. Appropriate medical documentation will be needed in such cases - - please work with academic office for exemption.
+<br>
+<br> 
+</li>
+<li><b>Grading Distribution:</b> The course instructor reserves the right to make minor modifications to the above distribution based on the progress of the courses. Below is the overall grade distribution.
+<br>
+<br> 
+<table border="1" align="center">
+<tr align="center"><th>Deliverables</th><th>Weightage</th></tr>
+<tr align="center"><td>Assignment (2)</td><td>20%</td></tr>
+<tr align="center"><td>Lab & Class Activities (5)</td><td>15%</td></tr>
+<tr align="center"><td>QUIZ (2)</td><td>20%</td></tr>
+<tr align="center"><td>MID (2) - Team Hackathon</td><td>20%</td></tr>
+<tr align="center"><td>Final Exam - Hackathon</td><td>25%</td></tr>
+</table>
+</li>
+<br>
+<!--<li><b>Evaluation Rubric:</b> All evaluations as part of this course follow below evaluation rubric. TAs will follow below guidelines for evaluating assignments and lab activities for this course.
+<br>
+<br>
+<table border="1" align="center" width="10%">
+<tr><th>Rubric</th><th>Input(15%)</th><th>Logic(60%)</th><th>Output(15%)</th><th>Submission(10%)</th></tr>
+<tr><td>Exceptional (100%)</td><td>All inputs are working as per the requirements</td><td>Logic is accurate and as per the requirements defined in the question</td><td>All outputs are returned as per the requirements</td><td>Script submissions are correct and as per requirements</td></tr>
+<tr><td>Acceptable (70%)</td><td>Inputs are partially working as per the requirements</td><td>Logic is almost correct and as per the requirements defined in the question</td><td>Outputs are partially returned as per the requirements</td><td>Script submissions is partially correct and as per requirements</td></tr>
+<tr><td>Beginning (30%)</td><td>At least one input is working as per the requirements</td><td>Logic is partially correct and as per the requirements defined in the question</td><td>At least one output is returned as per the requirement</td><td>Atleast one part of the script submission is correct and as per requirements</td></tr>
+<tr><td>No Response (0%)</td><td>None of the inputs are working as per the requirements</td><td>Logic is incorrect and not as per the requirements defined in the question</td><td>None of the outputs are returned as per the requirements</td><td>Script submissions is incorrect and not as per requirements</td></tr>
+</table> 
+</li>-->
+</ul><hr>
+</p>
+</td>
+</tr>
+</tr>
+</table> 
 
-    <article>
-      <section id="document">
-        <h2>Document & Metadata</h2>
-        <p>This page includes <code>&lt;!doctype html&gt;</code>, <code>lang</code>/<code>dir</code> on <code>html</code>, common <code>&lt;meta&gt;</code> tags, <code>&lt;link rel="icon"&gt;</code>, <code>&lt;title&gt;</code>, and a (commented) <code>&lt;base&gt;</code>.</p>
-        <p class="muted">Use DevTools &rarr; Elements to inspect the head.</p>
-        <noscript><p class="box"><strong>Noscript:</strong> Your browser has scripting disabled; some interactive bits won’t run.</p></noscript>
-      </section>
+<table border="1" align="center" width="10%" class="tg">
+<tr>
+<td colspan="5"><p align="left"><b id="schedule">&nbsp;Lecture Schedule & Content</b>&nbsp;&nbsp;&nbsp;[<a href="#home">go to top</a>]</p></td>
+</tr >
+  <tr align="center">
+    <th class="tg-7btt">Lecture No</th>
+    <th class="tg-7btt">Date</th>
+    <th class="tg-7btt">Day</th>
+    <th class="tg-7btt">Lecture Name</th>
+    <th class="tg-7btt">Material</th>
+  </tr>
+<tbody align="center">
+  <tr>
+    <td class="tg-c3ow">1</td>
+    <td class="tg-c3ow">31-Jul-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Course Intro - Software System</td>
+    <td class="tg-c3ow">[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/SSD_Class1.pdf" target="_blank">Slides</a>]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">2</td>
+    <td class="tg-c3ow">4-Aug-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Structred Databases</td>
+    <td class="tg-c3ow">[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/StructuredData.pdf" target="_blank">Slides</a> | <a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/databases.sql" target="_blank">Scripts</a> | <a href="https://tinted-rumba-8c6.notion.site/Structured-Databases-2456a6248bf6805f83e1cbf0a58761ec" target="_blank">Notes</a>]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">3</td>
+    <td class="tg-c3ow">7-Aug-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Scaling Databases</td>
+    <td class="tg-c3ow">[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/ScalingDatabases.pdf" target="_blank">Slides</a> | <a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/databases_2.sql" target="_blank">Scripts</a> | <a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/databases_3.sql" target="_blank">More Scripts</a>]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">4</td>
+    <td class="tg-c3ow">11-Aug-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Unstructured Databases</td>
+    <td class="tg-c3ow">[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/UnStructuredDatabases.pdf" target="_blank">Slides</a> | <a href="https://tinted-rumba-8c6.notion.site/Unstructured-Databases-24b6a6248bf680679b36e76c33d301c4" target="_blank">Notes</a> | <a href="https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/refs/heads/main/CourseContent/CS6302_M26/mongo.txt" target="_blank">Scripts</a>]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">5</td>
+    <td class="tg-c3ow">14-Aug-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Data Architectures</td>
+    <td class="tg-c3ow">[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/DatabaseArchitectures.pdf" target="_blank">Slides</a>]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">6</td>
+    <td class="tg-c3ow">18-Aug-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Understanding WWW</td>
+    <td class="tg-c3ow">[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/www.pdf" target="_blank">Slides</a> | <a href="https://tinted-rumba-8c6.notion.site/Web-Technology-2566a6248bf6800488d0c13a992502e4" target="_blank">Notes</a> | <a href="https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/refs/heads/main/CourseContent/CS6302_M26/samplehtml.html" target="_blank">Sample Script</a> ]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">7</td>
+    <td class="tg-c3ow">21-Aug-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Navigating WWW</td>
+    <td class="tg-c3ow">[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/WebLanguages.pdf" target="_blank">Slides</a> | <a href="https://github.com/serc-iiith/serc-iiith.github.io/blob/main/CourseContent/CS6302_M26/html.md" target="_blank">Notes</a> | <a href="https://github.com/serc-iiith/serc-iiith.github.io/blob/main/CourseContent/CS6302_M26/css.md" target="_blank">More Notes</a>]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">8</td>
+    <td class="tg-c3ow">28-Aug-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Web</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">9</td>
+    <td class="tg-c3ow">1-Sep-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Web</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">10</td>
+    <td class="tg-c3ow">3-Sep-26</td>
+    <td class="tg-c3ow">Thursday</td>
+    <td class="tg-c3ow">Web</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">11</td>
+    <td class="tg-c3ow">8-Sep-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Web</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">12</td>
+    <td class="tg-c3ow">11-Sep-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Web</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">13</td>
+    <td class="tg-c3ow">15-Sep-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Web</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">14</td>
+    <td class="tg-c3ow">18-Sep-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Web</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">15</td>
+    <td class="tg-c3ow">25-Sep-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">System Design</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">16</td>
+    <td class="tg-c3ow">29-Sep-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">System Design</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">17</td>
+    <td class="tg-c3ow">1-Oct-26</td>
+    <td class="tg-c3ow">Thursday</td>
+    <td class="tg-c3ow">SHELL</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">18</td>
+    <td class="tg-c3ow">6-Oct-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">SHELL</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">19</td>
+    <td class="tg-c3ow">9-Oct-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Python - 1</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">20</td>
+    <td class="tg-c3ow">13-Oct-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Python - 2</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">21</td>
+    <td class="tg-c3ow">16-Oct-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Python - 3</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">22</td>
+    <td class="tg-c3ow">23-Oct-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Python - 4</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">23</td>
+    <td class="tg-c3ow">27-Oct-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Python - 5</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">24</td>
+    <td class="tg-c3ow">30-Oct-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Python - 6</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">25</td>
+    <td class="tg-c3ow">3-Nov-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Python - 7</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">26</td>
+    <td class="tg-c3ow">10-Nov-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Python - 8</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">27</td>
+    <td class="tg-c3ow">13-Nov-26</td>
+    <td class="tg-c3ow">Friday</td>
+    <td class="tg-c3ow">Python - 9</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">28</td>
+    <td class="tg-c3ow">17-Nov-26</td>
+    <td class="tg-c3ow">Tuesday</td>
+    <td class="tg-c3ow">Python - 10</td>
+    <td class="tg-c3ow">[Slides] [Notes]</td>
+  </tr>
+</tbody></table>
+<table align="center" width="10%" cellspacing="10" cellpadding="10" border="0">
+<tr><td><hr></td></tr>
+</table>
 
-      <section id="text">
-        <h2>Text & Semantics</h2>
-        <div class="two-col">
-          <div>
-            <h1>Heading 1</h1>
-            <h2>Heading 2</h2>
-            <h3>Heading 3</h3>
-            <h4>Heading 4</h4>
-            <h5>Heading 5</h5>
-            <h6>Heading 6</h6>
-            <p>Paragraph with <em>emphasis</em>, <strong>strong</strong>, <i>i</i>, <b>b</b>, <u>u</u>, <s>del</s>, <mark>mark</mark>, <small>small</small>, <sup>sup</sup> and <sub>sub</sub>, a line<br>break, and an <abbr title="World Health Organization">WHO</abbr> abbreviation.</p>
-            <p>Inline semantics: <dfn id="dfn-api">API</dfn>, <var>x</var> = <code>Math.random()</code>, press <kbd class="kbd">Ctrl</kbd> + <kbd class="kbd">S</kbd>, output <samp>{"ok":true}</samp>, <wbr>verylongstringthatneeds<wbr>breaks.</p>
-            <p>Quoting: <q cite="https://example.com/quote">Short inline quote</q>.</p>
-            <blockquote cite="https://www.w3.org/TR/html52/">
-              <p>Blockquote with <cite>source</cite> URL in <code>cite</code> attribute.</p>
-            </blockquote>
-            <address>
-              <strong>Address:</strong> 123 Demo Street, Web City<br>
-              Contact: <a href="mailto:teacher@example.edu">teacher@example.edu</a>
-            </address>
-            <p>Time: Class starts <time datetime="2025-08-25T10:00">Aug 25, 2025, 10:00</time>.</p>
-          </div>
-          <div>
-            <figure>
-              <img alt="Decorative SVG placeholder" width="300" height="180" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 180'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%23dfe7fd'/><stop offset='1' stop-color='%23c7d2fe'/></linearGradient></defs><rect width='300' height='180' fill='url(%23g)'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%23333'>Figure Image</text></svg>">
-              <figcaption>Figure with <code>&lt;figcaption&gt;</code>.</figcaption>
-            </figure>
-            <p>Ruby annotation for East Asian text: <ruby>漢<rt>kan</rt>字<rt>ji</rt><rp>(</rp><rt>kanji</rt><rp>)</rp></ruby></p>
-            <p><span class="pill" contenteditable="true" spellcheck="true">contenteditable true</span> &nbsp; <span class="pill" contenteditable="true" spellcheck="false">spellcheck false</span></p>
-          </div>
-        </div>
-      </section>
+<table border="1" align="center" width="10%" class="tg">
+<tr>
+<td colspan="5"><p align="left"><b id="lab">&nbsp;Lab Schedule & Content</b>&nbsp;&nbsp;&nbsp;[<a href="#home">go to top</a>]</p></td>
+</tr >
+  <tr align="center">
+    <th class="tg-bobw">Lab No</th>
+    <th class="tg-bobw">Date</th>
+    <th class="tg-bobw">Day</th>
+    <th class="tg-bobw">Lab Session</th>
+    <th class="tg-bobw">Material</th>
+  </tr>
+<tbody align="center">
+  <tr>
+    <td class="tg-8d8j">1</td>
+    <td class="tg-8d8j">14-Aug-2026</td>
+    <td class="tg-8d8j">Friday</td>
+    <td class="tg-8d8j">git - version control</td>
+    <td class="tg-8d8j">[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/Labs/lab01/GitLab.pdf" target="_blank">Slides</a> | <a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/Labs/lab01/GitLabActivity.pdf" target="_blank">Activity</a>]</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">2</td>
+    <td class="tg-8d8j">21-Aug-2026</td>
+    <td class="tg-8d8j">Friday</td>
+    <td class="tg-8d8j">SQL - Stored procedures and Cursors</td>
+    <td class="tg-8d8j">[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/Labs/lab02/SP.pdf" target="_blank">Slides</a> | <a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/serc-iiith/serc-iiith.github.io/main/CourseContent/CS6302_M26/Labs/lab02/lab_activity_2.pdf" target="_blank">Activity</a>]</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">3</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">[Slides] [Activity]</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">4</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">[Slides] [Activity]</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">5</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">[Slides] [Activity]</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">6</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">[Slides] [Activity]</td>
+  </tr>
+</tbody></table>
 
-      <section id="links">
-        <h2>Links & Navigation</h2>
-        <p>
-          <a href="#text">In-page anchor</a> ·
-          <a href="https://example.com" target="_blank" rel="noopener">External</a> ·
-          <a href="tel:+18005551234">Telephone</a> ·
-          <a href="mailto:teacher@example.edu?subject=HTML%20Demo">Email</a> ·
-          <a download="hello.txt" href="data:text/plain,Hello%20HTML%20Class!">Download (data URI)</a>
-        </p>
-        <nav aria-label="Breadcrumb">
-          <ol>
-            <li><a href="#document">Home</a></li>
-            <li><a href="#text">Text</a></li>
-            <li aria-current="page">Links</li>
-          </ol>
-        </nav>
-        <p>Image map:</p>
-        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='140'><rect width='400' height='140' fill='%23eef2ff'/><circle cx='70' cy='70' r='40' fill='%2393c5fd'/><rect x='140' y='30' width='100' height='80' fill='%2360a5fa'/><polygon points='300,30 370,70 300,110' fill='%233b82f6'/><text x='70' y='75' text-anchor='middle' font-family='sans-serif' font-size='12'>#text</text><text x='190' y='75' text-anchor='middle' font-family='sans-serif' font-size='12'>#media</text><text x='325' y='75' text-anchor='middle' font-family='sans-serif' font-size='12'>#forms</text></svg>" usemap="#mapdemo" alt="Clickable shapes: circle links to Text, rect to Media, triangle to Forms" width="400" height="140">
-        <map name="mapdemo">
-          <area shape="circle" coords="70,70,40" href="#text" alt="Go to Text section">
-          <area shape="rect" coords="140,30,240,110" href="#media" alt="Go to Media section">
-          <area shape="poly" coords="300,30,370,70,300,110" href="#forms" alt="Go to Forms section">
-        </map>
-      </section>
+<table align="center" width="10%" cellspacing="10" cellpadding="10" border="0">
+<tr><td><hr></td></tr>
+</table>
+<table align="center" width="10%" border="1">
+<tr><td colspan="5">
+<p align="left"> <b id="activity">&nbsp; Exams</b>&nbsp;&nbsp;&nbsp;[<a href="#home">go to top</a>]</p>
+</td>
+</tr>
+  <tr align="center">
+    <th class="tg-bobw">S.No</th>
+    <th class="tg-bobw">Exam Type</th>
+    <th class="tg-bobw">Announcement</th>
+    <th class="tg-bobw">Submission Due</th>
+    <th class="tg-bobw">Material</th>
+  </tr>
+<tbody align="center">
+  <tr>
+    <td class="tg-8d8j">1</td>
+    <td class="tg-8d8j">Assignment 1</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">2</td>
+    <td class="tg-8d8j">Assignment 2</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">3</td>
+    <td class="tg-8d8j">QUIZ 1</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">4</td>
+    <td class="tg-8d8j">MID 1 Hackathon</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">5</td>
+    <td class="tg-8d8j">QUIZ 2</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+  </tr>
+	 <tr>
+    <td class="tg-8d8j">6</td>
+    <td class="tg-8d8j">MID 2 Hackathon</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">7</td>
+    <td class="tg-8d8j">Activity 1</td>
+    <td class="tg-8d8j">SQL Practice</td>
+    <td class="tg-8d8j">7 July 2026</td>
+    <td class="tg-8d8j"><a href="https://courses.iiit.ac.in/mod/assign/view.php?id=69645" target="_blank">Moodle</a></td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">8</td>
+    <td class="tg-8d8j">Activity 2</td>
+    <td class="tg-8d8j">NoSQL Practice</td>
+    <td class="tg-8d8j">18 July 2026</td>
+    <td class="tg-8d8j"><a href="https://courses.iiit.ac.in/mod/assign/view.php?id=70178" target="_blank">Moodle</a></td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">9</td>
+    <td class="tg-8d8j">Activity 3</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+  </tr>
+  <tr>
+    <td class="tg-8d8j">10</td>
+    <td class="tg-8d8j">Final Exam</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+    <td class="tg-8d8j">TBA</td>
+  </tr>
+</tbody></table>
 
-      <section id="media">
-        <h2>Images & Media</h2>
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>Picture element</h3>
-            <picture>
-              <source type="image/svg+xml" media="(min-width:800px)" srcset="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 200'><rect width='480' height='200' fill='%23fee2e2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%239b1c1c'>Large SVG</text></svg>">
-              <source type="image/svg+xml" media="(min-width:400px)" srcset="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 160'><rect width='360' height='160' fill='%23dcfce7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%23065f46'>Medium SVG</text></svg>">
-              <img width="240" height="120" alt="Small SVG fallback" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 120'><rect width='240' height='120' fill='%23dbeafe'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%231e3a8a'>Small SVG</text></svg>">
-            </picture>
-          </div>
-          <div class="card">
-            <h3>Audio</h3>
-            <audio controls>
-              <source src="data:audio/wav;base64,UklGRjQAAABXQVZFZm10IBAAAAABAAEAgD4AAIA+AAABAAgAZGF0YQAAAAA=" type="audio/wav">
-              Your browser does not support the audio element.
-            </audio>
-            <p class="muted">Tiny silent WAV via data URI for offline demo.</p>
-          </div>
-          <div class="card">
-            <h3>Video + captions</h3>
-            <video controls width="300" height="170" poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 170'><rect width='300' height='170' fill='%23f3f4f6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' fill='%23444'>Poster only</text></svg>">
-              <track default kind="captions" srclang="en" label="English" src="data:text/vtt,WEBVTT%0A%0A00:00.000%20--%3E%2000:02.000%0ADemo%20caption" />
-              Sorry, no inline video provided (kept small); captions track included.
-            </video>
-          </div>
-        </div>
-      </section>
 
-      <section id="embeds">
-        <h2>Embeds, Inline SVG & Canvas</h2>
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>iframe (srcdoc)</h3>
-            <iframe class="demo-iframe" title="Sandboxed iframe" sandbox srcdoc="&lt;!doctype html&gt;&lt;meta charset='utf-8'&gt;&lt;style&gt;body{font:14px/1.5 system-ui;margin:0;padding:1rem}&lt;/style&gt;&lt;h3&gt;Hello from srcdoc iframe&lt;/h3&gt;&lt;p&gt;This content is fully inline; no network needed.&lt;/p&gt;"></iframe>
-          </div>
-          <div class="card">
-            <h3>object & embed</h3>
-            <object type="image/svg+xml" data="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'><rect width='160' height='100' rx='12' fill='%23e0f2fe'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%23037553'>object</text></svg>" width="160" height="100">Fallback if unsupported</object>
-            <embed type="image/svg+xml" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'><rect width='160' height='100' rx='12' fill='%23ffedd5'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%239a3412'>embed</text></svg>" width="160" height="100" />
-          </div>
-          <div class="card">
-            <h3>Inline SVG</h3>
-            <svg viewBox="0 0 200 120" width="200" height="120" role="img" aria-label="SVG shapes">
-              <defs>
-                <linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#bae6fd"/><stop offset="1" stop-color="#93c5fd"/></linearGradient>
-              </defs>
-              <rect width="200" height="120" fill="url(#sg)" rx="12"/>
-              <circle cx="60" cy="60" r="30" fill="#0ea5e9"/>
-              <rect x="100" y="35" width="80" height="50" rx="8" fill="#0284c7"/>
-              <text x="100" y="105" text-anchor="middle" font-family="system-ui" font-size="14">Inline SVG</text>
-            </svg>
-          </div>
-        </div>
-        <div class="card" style="margin-top:.75rem">
-          <h3>Canvas</h3>
-          <canvas id="canvas" width="400" height="120" class="box"></canvas>
-        </div>
-      </section>
 
-      <section id="forms">
-        <h2>Forms & Controls</h2>
-        <form id="calc" class="grid grid-3" oninput="sum.value = Number(a.value||0)+Number(b.value||0)">
-          <fieldset class="card" style="grid-column:1/-1">
-            <legend>Basic inputs</legend>
-            <div class="cards">
-              <label>Text <input name="t" type="text" placeholder="Your name" autocomplete="name" required></label>
-              <label>Email <input name="e" type="email" placeholder="you@school.edu" required></label>
-              <label>Password <input name="p" type="password" minlength="6"></label>
-              <label>URL <input type="url" placeholder="https://"></label>
-              <label>Tel <input type="tel" placeholder="+1 555 555"></label>
-              <label>Search <input type="search" placeholder="Find…"></label>
-              <label>Number <input type="number" min="0" max="10" step="0.5"></label>
-              <label>Range <input type="range" min="0" max="100" value="50"></label>
-              <label>Date <input type="date"></label>
-              <label>Time <input type="time"></label>
-              <label>Color <input type="color" value="#2563eb"></label>
-              <label>File <input type="file" multiple></label>
-            </div>
-          </fieldset>
-          <fieldset class="card">
-            <legend>Select, datalist</legend>
-            <label>Choose one
-              <select>
-                <optgroup label="Group A"><option>Alpha</option><option>Beta</option></optgroup>
-                <optgroup label="Group B"><option>Gamma</option><option>Delta</option></optgroup>
-              </select>
-            </label>
-            <label>With datalist
-              <input list="fruits" placeholder="Type…">
-              <datalist id="fruits"><option>Apple</option><option>Banana</option><option>Cherry</option></datalist>
-            </label>
-          </fieldset>
-          <fieldset class="card">
-            <legend>Checks & radios</legend>
-            <label><input type="checkbox" checked> Subscribe</label><br>
-            <label><input type="checkbox"> Accept terms</label><br>
-            <label><input type="radio" name="r" checked> One</label>
-            <label><input type="radio" name="r"> Two</label>
-          </fieldset>
-          <fieldset class="card">
-            <legend>Textarea</legend>
-            <textarea rows="4" placeholder="Write here…"></textarea>
-          </fieldset>
-          <fieldset class="card">
-            <legend>Constraint validation</legend>
-            <label>Pattern (3 letters)
-              <input pattern="[A-Za-z]{3}" placeholder="abc" required>
-            </label>
-            <p><button type="submit">Submit</button> <button type="reset">Reset</button></p>
-          </fieldset>
-          <fieldset class="card">
-            <legend>&lt;output&gt; + calculation</legend>
-            <label>A <input id="a" type="number" value="2"></label>
-            <label>B <input id="b" type="number" value="3"></label>
-            <p>Sum: <output name="sum" for="a b">5</output></p>
-          </fieldset>
-          <fieldset class="card">
-            <legend>Data, meter & progress</legend>
-            <p>Dataset value: <data value="42">Forty‑two</data></p>
-            <label>Meter (score): <meter min="0" max="100" low="40" high="80" optimum="90" value="65">65</meter></label>
-            <p>Progress: <progress id="prog" max="100" value="0">0%</progress></p>
-          </fieldset>
-        </form>
-      </section>
 
-      <section id="tables">
-        <h2>Tables & Lists</h2>
-        <div class="grid grid-2">
-          <div>
-            <table>
-              <caption>Sample Table</caption>
-              <colgroup>
-                <col span="1" style="background:#00000008">
-                <col>
-                <col>
-              </colgroup>
-              <thead>
-                <tr><th scope="col">Item</th><th scope="col">Qty</th><th scope="col">Price</th></tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">Alpha</th><td>2</td><td>$3</td></tr>
-                <tr><th scope="row">Beta</th><td>5</td><td>$4</td></tr>
-                <tr><th scope="row">Gamma</th><td>1</td><td>$7</td></tr>
-              </tbody>
-              <tfoot>
-                <tr><th scope="row" colspan="2">Total</th><td>$25</td></tr>
-              </tfoot>
-            </table>
-          </div>
-          <div>
-            <h3>Lists</h3>
-            <ul>
-              <li>Unordered list</li>
-              <li>Nested
-                <ul>
-                  <li>Child</li>
-                </ul>
-              </li>
-            </ul>
-            <ol start="3" reversed>
-              <li>Ordered reversed (value set)</li>
-              <li value="10">Manual value = 10</li>
-            </ol>
-            <dl>
-              <dt>HTML</dt><dd>Markup language for documents on the web.</dd>
-              <dt>CSS</dt><dd>Style sheet language for presentation.</dd>
-            </dl>
-            <hr>
-            <p>Horizontal rule above separates content.</p>
-          </div>
-        </div>
-      </section>
+<table align="center" width="10%" border="0">
+<tr>
+<td><hr> <p align="left"><b id="staff">Staff:</b>&nbsp;&nbsp;&nbsp;[<a href="#home">go to top</a>] </p></td>
+<tr>
+<td><b>Instructors:</b> <a href="https://sites.google.com/view/abhishek-singh/home" target="_blank">Dr. Abhishek Singh</a>, <a href="https://sai11101989.github.io" target="_blank">Dr. Sai Anirudh Karre</a> </td>
+</tr>
+<tr>
+<td><b>Teaching Assistants:</b> <a href="https://www.linkedin.com/in/gursahib-singh-18392736a/" target="_blank">Gursahib Singh</a>, <a href="https://www.linkedin.com/in/kandagatla-akshith-4b9a5131b/" target="_blank">Kandagatla Akshith</a>, <a href="https://www.linkedin.com/in/arushi-tandon-5139982a0/" target="_blank">Arushi Tandon</a>, <a href="https://www.linkedin.com/in/rahulsaha99/" target="_blank">Rahul Saha</a>, <a href="https://www.linkedin.com/in/hardik-chadha-876338266/" target="_blank">Hardik Chadha</a></td>
+</tr>
+<tr><td><hr></td></tr>
+</table>
+<table align="center" width="10%" cellspacing="10" cellpadding="10" border="0">
+<tr>
+<td><p align="center"><font face="Quicksand" size="3">
+Important Links: <a href="https://intranet.iiit.ac.in/offices/static/files/Monsoon_2026_Almanac_Final.pdf" target="_blank">Monsoon 2026 Almanac</a> | <a href="https://intranet.iiit.ac.in/offices/static/files/Lecture_Timetable_M26-V3.pdf" target="_blank">Monsoon 2026 Lecture Timetable</a> | <a href="https://intranet.iiit.ac.in/offices/static/files/Non-UG1_Lab%26Tutorial_timetable_M26-V3.pdf" target="_blank">Monsoon 2026 Lab Timetable</a> | <a href="https://courses.iiit.ac.in/course/view.php?id=5840" target="_blank">Courses Portal</a> 
+</font></p><hr></td>
+</tr>
+<tr>
+<td>  <font face="Quicksand" size="3"> [<a href="#home">go to top</a>]<br><div align="center" id="txt"></div></font> 
+<p align="center"><font face="Quicksand" size="2">
+		Course site hosted by github.io using BORING (&#129397;) course template <br>
+		
+		Course Policy credits to <a href="https://faculty.iiit.ac.in/~raghu.reddy/Home.html">Dr. Raghu Reddy</a> & <a href="https://karthikvaidhyanathan.com/">Dr. Karthik Vaidhyanathan</a><br>
+	<a href="https://serc.iiit.ac.in">Software Engineering Research Center</a>,<a href="https://iiit.ac.in">IIIT Hyderabad</a></font><br> </p><!--<br><p id="lastUpdated" align="center"><font face="Quicksand" size="2">Site Last Updated on: </font></p>--></td>
+</tr>
+</table>
 
-      <section id="interactive">
-        <h2>Interactive Elements</h2>
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>&lt;details&gt;</h3>
-            <details open>
-              <summary>Click to toggle details</summary>
-              <p>Expandable content without JavaScript.</p>
-            </details>
-          </div>
-          <div class="card">
-            <h3>&lt;dialog&gt;</h3>
-            <button id="openDialog">Open dialog</button>
-            <dialog id="d">
-              <form method="dialog">
-                <p><strong>Hello!</strong> I am a native modal dialog.</p>
-                <menu>
-                  <button value="cancel">Cancel</button>
-                  <button value="ok">OK</button>
-                </menu>
-              </form>
-            </dialog>
-          </div>
-          <div class="card">
-            <h3>Hidden & translate</h3>
-            <p><button id="toggleHidden">Toggle hidden section</button></p>
-            <p id="secret" hidden>This text was hidden using the <code>hidden</code> attribute.</p>
-            <p translate="no">Brand name (no translate): WebX</p>
-          </div>
-        </div>
-      </section>
 
-      <section id="international">
-        <h2>Internationalization (i18n) & Direction</h2>
-        <p lang="fr">Texte en <em>français</em> avec <code>lang="fr"</code>.</p>
-        <p><bdo dir="rtl">This text is forced RTL with bdo.</bdo></p>
-        <p>Bi-directional isolate with <code>bdi</code>: <bdi dir="auto">مرحبا</bdi> mixed with English.</p>
-      </section>
-
-      <section id="a11y">
-        <h2>Accessibility Hints</h2>
-        <ul>
-          <li>Use semantic elements (<code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>aside</code>, <code>footer</code>).</li>
-          <li>Associate labels with inputs (<code>label for</code> or wrapping).</li>
-          <li>Alt text for images, <code>figure/figcaption</code> for complex visuals.</li>
-          <li>Use <code>aria-label</code> where semantics aren’t sufficient.</li>
-        </ul>
-      </section>
-
-      <section id="scripting">
-        <h2>Scripting, Template & Web Components</h2>
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>&lt;template&gt; cloning</h3>
-            <button id="addCard">Add card from template</button>
-            <div id="cardHost" class="cards" style="margin-top:.5rem"></div>
-            <template id="cardTpl">
-              <div class="card">Template‑instantiated card at <time></time></div>
-            </template>
-          </div>
-          <div class="card">
-            <h3>Custom Element</h3>
-            <hello-box mood="excited">Web Components slot content!</hello-box>
-            <template id="helloTemplate">
-              <style>:host{display:block;border:1px solid #0003;border-radius:12px;padding:.6rem;background:#fff2}</style>
-              <p><strong>Hello</strong> from <code>&lt;hello-box&gt;</code> — mood: <span id="m"></span></p>
-              <slot></slot>
-            </template>
-          </div>
-          <div class="card">
-            <h3>Dataset & data-* attributes</h3>
-            <div id="ds" class="box" data-topic="html" data-level="advanced">data‑ attributes live here</div>
-            <p class="muted">Open console: <code>document.getElementById('ds').dataset</code></p>
-          </div>
-        </div>
-      </section>
-
-      <section id="download">
-        <h2>Download this Demo</h2>
-        <p>You can save this page directly from the browser (File → Save), or <a id="selfDownload" download="html-super-demo.html" href="#">download a generated copy</a>.</p>
-      </section>
-
-      <footer class="muted" style="margin-top:2rem">
-        <p>&copy; 2025 HTML Super Demo. Licensed for classroom use. Made to be fully offline (all assets are data URIs).</p>
-      </footer>
-    </article>
-  </main>
-
-  <script type="module">
-    // Canvas demo
-    const cv = document.getElementById('canvas');
-    if (cv?.getContext) {
-      const ctx = cv.getContext('2d');
-      const g = ctx.createLinearGradient(0,0,400,0); g.addColorStop(0,'#dbeafe'); g.addColorStop(1,'#93c5fd');
-      ctx.fillStyle = g; ctx.fillRect(0,0,cv.width,cv.height);
-      ctx.fillStyle = '#1e3a8a'; ctx.font = '20px system-ui'; ctx.fillText('Canvas 2D API — gradient + text', 12, 66);
-      ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 8; ctx.strokeRect(6,6,cv.width-12,cv.height-12);
-    }
-
-    // Dialog
-    const d = document.getElementById('d');
-    document.getElementById('openDialog')?.addEventListener('click', ()=> d.showModal());
-
-    // Hidden toggle
-    document.getElementById('toggleHidden')?.addEventListener('click', ()=>{
-      const s = document.getElementById('secret'); s.hidden = !s.hidden;
-    });
-
-    // Progress animation
-    const prog = document.getElementById('prog');
-    let v = 0; setInterval(()=>{ if(!prog) return; v = (v+5)%105; prog.value = v; prog.textContent = v + '%'; }, 500);
-
-    // Template cloning
-    const host = document.getElementById('cardHost');
-    const tpl = document.getElementById('cardTpl');
-    document.getElementById('addCard')?.addEventListener('click', ()=>{
-      const node = tpl.content.cloneNode(true);
-      node.querySelector('time').textContent = new Date().toLocaleTimeString();
-      host.appendChild(node);
-    });
-
-    // Web Component
-    class HelloBox extends HTMLElement {
-      constructor(){ super(); const s = this.attachShadow({mode:'open'}); const t = document.getElementById('helloTemplate'); s.appendChild(t.content.cloneNode(true)); }
-      connectedCallback(){ this.shadowRoot.getElementById('m').textContent = this.getAttribute('mood') || 'neutral'; }
-    }
-    customElements.define('hello-box', HelloBox);
-
-    // Self-download current HTML
-    const a = document.getElementById('selfDownload');
-    if (a) {
-      const blob = new Blob([document.documentElement.outerHTML], {type:'text/html'});
-      a.href = URL.createObjectURL(blob);
-    }
-  </script>
-</body>
+	</body>
 </html>
